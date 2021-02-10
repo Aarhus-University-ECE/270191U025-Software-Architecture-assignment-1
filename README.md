@@ -48,7 +48,7 @@ Make sure the following programs are installed and can be accessed from the syst
 - [CppCheck\*](http://cppcheck.sourceforge.net/)
 - [Valgrind\*](https://valgrind.org/)
 
-Dependencies marked with '\*' are optional.
+Dependencies marked with '\*' are optional, but installing these are recommended as they will be used by the server to check the code.
 
 On Ubuntu you can install these using:
 
@@ -94,66 +94,37 @@ Source and header files are stored in the respective folders:
 
 ### Test-Suite and Grading
 
-A central goal of this course is to improve your ability to write high quality and 'correct' code. Part of this effort is an increased emphasis on systematic testing.
+A central goal of this course is to improve your ability to write high quality and 'correct' code. Part of this effort is an increased emphasis on systematic testing, see [Test-Suite and Grading](Test-Suite-and-Grading).
 
 For each exercise you are provided a set of unit tests as part of the handout that can be run to verify which parts of your code works and which parts do not. To test your code run the `autograde.py` script using python:
 
 ```bash
 > python autograde.py
+
+# output from compiler and test cases
 ...
 
-1: Test command: C:\Users\clega\Desktop\repos\270191U025-Software-Architecture-assignment-template\build\Debug\tests.exe
-1: Test timeout computed to be: 10000000
-1:
-1: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-1: tests.exe is a Catch v2.13.4 host application.
-1: Run with -? for options
-1:
-1: -------------------------------------------------------------------------------
-1: Addition
-1:   0 + 1 is 1
-1: -------------------------------------------------------------------------------
-1: C:\Users\clega\Desktop\repos\270191U025-Software-Architecture-assignment-template\src\tests.cpp(16)
-1: ...............................................................................
-1:
-1: C:\Users\clega\Desktop\repos\270191U025-Software-Architecture-assignment-template\src\tests.cpp(18): FAILED:
-1:   REQUIRE( sum(0, 1) )
-1: with expansion:
-1:   0
-1:
-1: ===============================================================================
-1: test cases: 1 | 1 failed
-1: assertions: 2 | 1 passed | 1 failed
-1:
-1/1 Test #1: usage_test .......................***Failed    0.02 sec
-
-0% tests passed, 1 tests failed out of 1
-
-Total Test time (real) =   0.02 sec
-
-The following tests FAILED:
-          1 - usage_test (Failed)
-
-INFO:.\autograde.py:Running Memory Checker
-UpdateCTestConfiguration  from :C:/Users/clega/Desktop/repos/270191U025-Software-Architecture-assignment-template/build/DartConfiguration.tcl
-Cannot find file: C:/Users/clega/Desktop/repos/270191U025-Software-Architecture-assignment-template/build/DartConfiguration.tcl
-   Site:
-   Build name: (empty)
-UpdateCTestConfiguration  from :C:/Users/clega/Desktop/repos/270191U025-Software-Architecture-assignment-template/build/DartConfiguration.tcl
-Cannot find file: C:/Users/clega/Desktop/repos/270191U025-Software-Architecture-assignment-template/build/DartConfiguration.tcl
-Memory check project C:/Users/clega/Desktop/repos/270191U025-Software-Architecture-assignment-template/build
-Memory checker (MemoryCheckCommand) not set, or cannot find the specified program.
-Errors while running CTest
-INFO:.\autograde.py:
 #######################################################################################################
-Final grade is: 0
 
-grade = test_passed_fraction* 70 + memory_check_passed * 20 + static_analysis_passed * 10
-0 = 0% * 70 + False * 20 + False * 10
+Summary:
+- test passed: 0.0%
+- memory check: ToolStatus.NOT_FOUND
+- static analysis (cppcheck): ToolStatus.PASSED
+- static analysis (clang-tidy): ToolStatus.PASSED
+
+Grading Scheme:
+grade = test_passed_fraction * 70 + memory_check_passed * 20 + static_analysis_passed * 10
+
+Final grade is: 10.0
+
+Note: One or more tools could not be located. These will be run by the server during grading. To see the results yourself install the tools on you local machine and add them to your system path.
 #######################################################################################################
 ```
 
 **The script is 'work in progress' if you have suggestion for improvements contact the TA. However, do not modify the script, a checksum is used to check the integrity of the file. Incorrect checksum ⟹ no pass.**
+
+The final note indicates that either `valgrind`, `cppcheck`, or `clang-tidy` could not be found.
+My recommendation is to test the code on the VM where these dependencies are easy to install if you are struggeling to install these.
 
 ### Correcting the Code
 
@@ -189,7 +160,8 @@ grade = test_passed_fraction * 70 + memory_check_passed * 20 + static_analysis_p
 
 Final grade is: 80.0
 
+Note: One or more tools could not be located. These will be run by the server during grading. To see the results yourself install the tools on you local machine and add them to your system path
 #######################################################################################################
 ```
 
-N
+Finally, push the code to the repository and you are done :)
