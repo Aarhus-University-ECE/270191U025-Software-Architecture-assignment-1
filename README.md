@@ -1,20 +1,4 @@
-# 270191U025-Software-Architecture-assignment-template
-
-## Meta Information To Instructors (REMOVE THIS FROM ASSIGNMENT)
-
-This repository contains a template for C++ based assignements in the 'Software Architecture' course.
-The template provides a CMake-based build system that makes it easy that makes it easy to build and test the students code.
-
-The intention is to use this template as the seed project to several other repos, specifically one for each assignment in the course.
-An assignement in GitHub classroom provides the students with the appropriate files.
-
-To detect tampering with the grading file calculate the md5 checksum. The most portable way of doing this is using python:
-
-```bash
-python -c "import hashlib; print(hashlib.md5(open('autograde.py','rb').read()).hexdigest())"
-```
-
-The md5 checksum should be: `3fb245f0f15bf8b4aeb34e9b5adc1289` -- if it is not then the file has been modified, which may or may not be intentional.
+# 270191U025-Software-Architecture-assignment-1
 
 ## Assignment
 
@@ -35,7 +19,7 @@ The easiest way to check whether a program is in the systems path is to attempt 
 For example to check if the python interpreter is installed:
 
 ```bash
-python
+python # python3 on most unix systems
 ```
 
 Make sure the following programs are installed and can be accessed from the systems path:
@@ -48,7 +32,7 @@ Make sure the following programs are installed and can be accessed from the syst
 - [CppCheck\*](http://cppcheck.sourceforge.net/)
 - [Valgrind\*](https://valgrind.org/)
 
-Dependencies marked with '\*' are optional, but installing these are recommended as they will be used by the server to check the code.
+Dependencies marked with '\*' are optional, but installing these are recommended as they will be used to check the code you submit.
 
 On Ubuntu you can install these using:
 
@@ -94,9 +78,10 @@ Source and header files are stored in the respective folders:
 
 ### Test-Suite and Grading
 
-A central goal of this course is to improve your ability to write high quality and 'correct' code. Part of this effort is an increased emphasis on systematic testing, see [Test-Suite and Grading](Test-Suite-and-Grading).
+A central goal of this course is to improve your ability to write high quality and 'correct' code. Part of this effort is an increased emphasis on systematic testing.
 
-For each exercise you are provided a set of unit tests as part of the handout that can be run to verify which parts of your code works and which parts do not. To test your code run the `autograde.py` script using python:
+For each exercise you are provided a set of unit tests as part of the handout that can be run to verify which parts of your code works and which parts do not.
+To test your code run the `autograde.py` script using python:
 
 ```bash
 > python autograde.py
@@ -121,7 +106,16 @@ Note: One or more tools could not be located. These will be run by the server du
 #######################################################################################################
 ```
 
-**The script is 'work in progress' if you have suggestion for improvements contact the TA. However, do not modify the script, a checksum is used to check the integrity of the file. Incorrect checksum ⟹ no pass.**
+The script will perform several tests:
+
+1. The code compiles
+2. The unit tests passes
+3. detect memory leaks
+4. run static analysis tools cppcheck and clang-tidy
+
+**To pass your program must pass all tests and be free of memory leaks**
+
+The script is 'work in progress' if you have suggestion for improvements contact the TA. However, do not modify the script, a checksum is used to check the integrity of the file. Incorrect checksum ⟹ no pass.
 
 The final note indicates that either `valgrind`, `cppcheck`, or `clang-tidy` could not be found.
 My recommendation is to test the code on the VM where these dependencies are easy to install if you are struggeling to install these.
