@@ -2,17 +2,24 @@ cmake_minimum_required(VERSION 3.10)
 project(template)
 include(CTest)
 
-# option(ENABLE_CPPCHECK "Run code analysis using cppcheck" OFF)
-# option(ENABLE_CLANG_TIDY "Run code analysis using clang-tidy" OFF)
-# option(ENABLE_STRICT "Compile in strict mode" OFF)
+set(CMAKE_CXX_STANDARD 14)
 
-if(ENABLE_STRICT)
-  if(MSVC)
-    add_compile_options(/W4 /WX)
-  else()
-    add_compile_options(-Wall -Wextra -pedantic -Werror)
-  endif()
-endif()
+# static checks
+# if(MSVC)
+#   add_compile_options(/W4 /WX)
+# else()
+#   add_compile_options(-Wall -Wextra -pedantic -Werror)
+# endif()
+
+# set(CMAKE_CXX_CLANG_TIDY
+#   clang-tidy;
+#   -checks=*;
+# )
+
+# set(CMAKE_CXX_CPPCHECK
+#   cppcheck;
+#   --error-exitcode=1;
+# )
 
 
 # set include directory of all targets to the 'include' folder, this is similar

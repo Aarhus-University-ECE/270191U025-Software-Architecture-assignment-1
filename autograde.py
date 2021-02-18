@@ -63,7 +63,7 @@ if __name__ == "__main__":
         makedirs(build_path, exist_ok=True)
 
         with cd(build_path):
-            if subprocess.run(["cmake", "configure", ".."]).returncode != 0:
+            if subprocess.run(["cmake", ".."]).returncode != 0:
                 logger.error("Unable to configure CMake project")
                 sys.exit(1)
 
