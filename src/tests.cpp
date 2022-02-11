@@ -15,6 +15,6 @@ TEST_CASE("Addition")
 
     SECTION("0 + 1 is 1")
     {
-        REQUIRE(sum(0, 1)==1);
+        REQUIRE(sum(0, 1));
     }
 }
