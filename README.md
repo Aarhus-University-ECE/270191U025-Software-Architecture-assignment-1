@@ -37,7 +37,7 @@ Dependencies marked with '\*' are optional, but installing these are recommended
 On Ubuntu you can install these using:
 
 ```
-sudo apt install build-essential cmake python3 valgrid git clang-tidy cppcheck python3
+sudo apt install build-essential cmake valgrind git clang-tidy cppcheck
 ```
 
 You may install an CMake integration in VSCode that makes it easier to build and debug you code.
